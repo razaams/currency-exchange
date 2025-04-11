@@ -5,7 +5,6 @@ import exchange.currency.domain.Item;
 import exchange.currency.domain.User;
 import exchange.currency.domain.UserType;
 import exchange.currency.service.BillCalculationService;
-import exchange.currency.service.DiscountCalculationService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

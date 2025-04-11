@@ -18,8 +18,6 @@ public class DiscountCalculationService {
 
         double discount = customerDiscountContext.applyDiscount(bill) + amountDiscountContext.applyDiscount(bill);
 
-        System.out.println("Discount calculated: "+ discount);
-
         return Math.max(discount, 0);
     }
 }

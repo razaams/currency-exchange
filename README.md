@@ -8,7 +8,7 @@ This application calculates the net payable amount on a bill based on various di
 2. Application UML Diagram ***(available at artifacts/currency-exchange-drawio.pdf)***
 3. Source code static analysis report ***(available at artifacts/pmd-lint-analysis)***
 4. Test coverage report ***(available at artifacts/jacoco-test-coverage)***
-5. Sonar qube summary for code quality ***(available at artifacts/sonarqube-report)***
+5. Sonarqube summary for code quality ***(available at artifacts/sonarqube-report)***
 6. Sample input data to run application ***(available at artifacts/sample-input.json file)***
 
 ### Code Analysis & Coverage
@@ -54,7 +54,15 @@ This application calculates the net payable amount on a bill based on various di
     ```bash
 	java -jar .\target\currency-exchange-0.1.jar
     ```
-7. Sample input
+
+7. API authentication
 	```bash
-	.\artifacts\sample-input.json
+	http basic authentication
+	username: user1
+	password: SecurePassword@1
 	```
+
+7. Sample cURL request
+	```bash
+	.\artifacts\sample-curl-request.txt
+	```	

@@ -1,4 +1,8 @@
-{
+curl --location 'http://localhost:8080/api/calculate' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Basic dXNlcjE6U2VjdXJlUGFzc3dvcmRAMQ==' \
+--header 'Cookie: JSESSIONID=85A7D30C4B31F7A38DC668DB4A87593B' \
+--data '{
     "user": {
         "userType": "EMPLOYEE",
         "customerSince": "2024-07-07"
@@ -22,4 +26,4 @@
             "grocery": false
         }
     ]
-}
+}'
