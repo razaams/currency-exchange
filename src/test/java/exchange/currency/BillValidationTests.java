@@ -4,6 +4,7 @@ import exchange.currency.domain.BillRequest;
 import exchange.currency.domain.Item;
 import exchange.currency.domain.User;
 import exchange.currency.domain.UserType;
+import exchange.currency.service.BillCalculationService;
 import exchange.currency.service.DiscountCalculationService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +24,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class BillValidationTests {
 
     @Autowired
-    private DiscountCalculationService discountCalculationService;
+    private BillCalculationService billCalculationService;
 
     @Test
     void testValidateBill_NullBill() {
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> {
-            discountCalculationService.calculateDiscountAmount(null);
+            billCalculationService.calculatePayableBill(null);
         });
 
         assertEquals("Bill cannot be null", ex.getMessage());
@@ -38,7 +39,7 @@ class BillValidationTests {
     void testValidateBill_NullUser() {
         BillRequest billWithNullUser = BillRequest.builder().user(null).items(List.of(new Item())).build();
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> {
-            discountCalculationService.calculateDiscountAmount(billWithNullUser);
+            billCalculationService.calculatePayableBill(billWithNullUser);
         });
 
         assertEquals("Bill user cannot be null", ex.getMessage());
@@ -48,7 +49,7 @@ class BillValidationTests {
     void testValidateBill_User_NullUserType() {
         BillRequest billWithNullUserType = BillRequest.builder().user(new User()).items(List.of(new Item())).build();
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> {
-            discountCalculationService.calculateDiscountAmount(billWithNullUserType);
+            billCalculationService.calculatePayableBill(billWithNullUserType);
         });
 
         assertEquals("Bill user type cannot be null", ex.getMessage());
@@ -60,7 +61,7 @@ class BillValidationTests {
         BillRequest billWithNullCustomerSince = BillRequest.builder().user(new User(UserType.CUSTOMER, null))
                 .items(List.of(new Item())).build();
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> {
-            discountCalculationService.calculateDiscountAmount(billWithNullCustomerSince);
+            billCalculationService.calculatePayableBill(billWithNullCustomerSince);
         });
 
         assertEquals("Bill user customer since cannot be null", ex.getMessage());
@@ -70,7 +71,7 @@ class BillValidationTests {
     void testValidateBill_NullItems() {
         BillRequest billWithNullItems = BillRequest.builder().user(new User(UserType.CUSTOMER, LocalDate.now())).items(null).build();
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> {
-            discountCalculationService.calculateDiscountAmount(billWithNullItems);
+            billCalculationService.calculatePayableBill(billWithNullItems);
         });
 
         assertEquals("Bill items cannot be null", ex.getMessage());
@@ -81,7 +82,7 @@ class BillValidationTests {
         BillRequest billWithEmptyItems = BillRequest.builder().user(new User(UserType.CUSTOMER, LocalDate.now()))
                 .items(Collections.emptyList()).build();
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> {
-            discountCalculationService.calculateDiscountAmount(billWithEmptyItems);
+            billCalculationService.calculatePayableBill(billWithEmptyItems);
         });
 
         assertEquals("Bill items cannot be empty", ex.getMessage());

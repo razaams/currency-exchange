@@ -1,0 +1,25 @@
+{
+    "user": {
+        "userType": "EMPLOYEE",
+        "customerSince": "2024-07-07"
+    },
+    "originalCurrency": "PKR",
+    "targetCurrency": "EUR",
+    "items": [
+        {
+            "name": "Apple",
+            "price": 30,
+            "grocery": true
+        },
+        {
+            "name": "Room Cooler",
+            "price": 35,
+            "grocery": false
+        },
+        {
+            "name": "Air Condition",
+            "price": 80,
+            "grocery": false
+        }
+    ]
+}
