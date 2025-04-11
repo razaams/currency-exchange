@@ -9,7 +9,7 @@ This application calculates the net payable amount on a bill based on various di
 3. Source code static analysis report ***(available at artifacts/pmd-lint-analysis)***
 4. Test coverage report ***(available at artifacts/jacoco-test-coverage)***
 5. Sonarqube summary for code quality ***(available at artifacts/sonarqube-report)***
-6. Sample input data to run application ***(available at artifacts/sample-input.json file)***
+6. Sample cURL to run application ***(available at artifacts/sample-curl-request.txt file)***
 
 ### Code Analysis & Coverage
 1. Junit is used for Application Unit testing
